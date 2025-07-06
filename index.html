@@ -30,6 +30,7 @@
       max-width: 800px;
       height: auto;
       animation: photoFadeIn 1.5s ease-in;
+      margin: 0 auto;
     }
     .hero-img {
       width: 100%;
@@ -55,6 +56,9 @@
       background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
       position: relative;
       overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .floral-overlay::before {
       content: '';
@@ -70,6 +74,9 @@
     .content {
       position: relative;
       z-index: 1;
+      width: 100%;
+      display: flex;
+      justify-content: center;
     }
     .btn {
       transition: all 0.3s ease;
@@ -82,11 +89,32 @@
       font-size: 1rem;
       cursor: pointer;
       font-family: 'Playfair Display', serif;
+      position: relative;
     }
     .btn:hover {
       transform: scale(1.05);
       background: #b8860b;
       color: #1a1a1a;
+    }
+    .btn::before {
+      content: '✿';
+      position: absolute;
+      left: -20px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #b8860b;
+      font-size: 1rem;
+      opacity: 0.7;
+    }
+    .btn::after {
+      content: '✿';
+      position: absolute;
+      right: -20px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #b8860b;
+      font-size: 1rem;
+      opacity: 0.7;
     }
     section {
       min-height: 100vh;
@@ -97,6 +125,27 @@
     h1, h2 {
       font-family: 'Playfair Display', serif;
       text-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
+      position: relative;
+    }
+    h1::before, h2::before {
+      content: '❀';
+      position: absolute;
+      left: -30px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #b8860b;
+      font-size: 1.2rem;
+      opacity: 0.6;
+    }
+    h1::after, h2::after {
+      content: '❀';
+      position: absolute;
+      right: -30px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #b8860b;
+      font-size: 1.2rem;
+      opacity: 0.6;
     }
     .fade-in {
       animation: fadeIn 1.2s ease-in;
@@ -115,6 +164,7 @@
       justify-content: center;
       margin-bottom: 1rem;
       font-family: 'Playfair Display', serif;
+      position: relative;
     }
     .countdown div {
       background: #2c2c2c;
@@ -162,10 +212,12 @@
       border-radius: 15px;
       padding: 2rem;
       max-width: 600px;
+      width: 100%;
       box-shadow: 0 10px 30px rgba(184, 134, 11, 0.4);
       animation: cardFadeIn 1.5s ease-in;
       position: relative;
       overflow: hidden;
+      margin: 0 auto;
     }
     .details-card::before {
       content: '';
@@ -176,6 +228,43 @@
       height: 200%;
       background: radial-gradient(circle, rgba(184, 134, 11, 0.1) 0%, transparent 70%);
       animation: glowPulse 6s ease-in-out infinite;
+    }
+    .details-card::after {
+      content: '';
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+      border: 1px dashed #b8860b;
+      border-radius: 10px;
+      opacity: 0.3;
+    }
+    .corner-floral {
+      position: absolute;
+      color: #b8860b;
+      font-size: 1.5rem;
+      opacity: 0.5;
+    }
+    .corner-floral.top-left {
+      top: 10px;
+      left: 10px;
+      transform: rotate(0deg);
+    }
+    .corner-floral.top-right {
+      top: 10px;
+      right: 10px;
+      transform: rotate(90deg);
+    }
+    .corner-floral.bottom-left {
+      bottom: 10px;
+      left: 10px;
+      transform: rotate(270deg);
+    }
+    .corner-floral.bottom-right {
+      bottom: 10px;
+      right: 10px;
+      transform: rotate(180deg);
     }
     @keyframes cardFadeIn {
       0% { opacity: 0; transform: translateY(50px); }
@@ -196,6 +285,26 @@
       margin-bottom: 1rem;
       letter-spacing: 0.05em;
     }
+    .details-text::before {
+      content: '✿';
+      position: absolute;
+      left: -25px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #b8860b;
+      font-size: 1rem;
+      opacity: 0.7;
+    }
+    .details-text::after {
+      content: '✿';
+      position: absolute;
+      right: -25px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #b8860b;
+      font-size: 1rem;
+      opacity: 0.7;
+    }
     @media (max-width: 1280px) {
       .hero-img-container {
         max-width: 90%;
@@ -209,6 +318,11 @@
       .btn {
         padding: 0.5rem 1.25rem;
         font-size: 0.9rem;
+      }
+      .btn::before, .btn::after {
+        font-size: 0.9rem;
+        left: -15px;
+        right: -15px;
       }
       .countdown span {
         font-size: 1.25rem;
@@ -241,6 +355,11 @@
         padding: 0.5rem 1rem;
         font-size: 0.875rem;
       }
+      .btn::before, .btn::after {
+        font-size: 0.875rem;
+        left: -15px;
+        right: -15px;
+      }
       .countdown div {
         min-width: 50px;
         padding: 0.5rem;
@@ -260,6 +379,19 @@
       }
       .details-text {
         font-size: 1rem;
+      }
+      .details-text::before, .details-text::after {
+        font-size: 0.875rem;
+        left: -20px;
+        right: -20px;
+      }
+      h1::before, h1::after, h2::before, h2::after {
+        font-size: 1rem;
+        left: -20px;
+        right: -20px;
+      }
+      .corner-floral {
+        font-size: 1.2rem;
       }
     }
     @media (max-width: 480px) {
@@ -285,6 +417,11 @@
         padding: 0.5rem 0.75rem;
         font-size: 0.75rem;
       }
+      .btn::before, .btn::after {
+        font-size: 0.75rem;
+        left: -12px;
+        right: -12px;
+      }
       .countdown div {
         min-width: 40px;
         padding: 0.4rem;
@@ -299,11 +436,25 @@
         width: 60px;
       }
       .details-card {
+        max-width: 95%;
         padding: 0.75rem;
       }
       .details-text {
         font-size: 0.875rem;
         line-height: 1.5;
+      }
+      .details-text::before, .details-text::after {
+        font-size: 0.75rem;
+        left: -15px;
+        right: -15px;
+      }
+      h1::before, h1::after, h2::before, h2::after {
+        font-size: 0.875rem;
+        left: -15px;
+        right: -15px;
+      }
+      .corner-floral {
+        font-size: 1rem;
       }
     }
   </style>
@@ -313,7 +464,7 @@
   <section class="hero-section floral-overlay">
     <div class="content fade-in">
       <div class="hero-img-container">
-        <img src="00.jpg" alt="Kamronbek и Nafisabonu" class="hero-img">
+        <img src="444.jpg" alt="Kamronbek и Nafisabonu" class="hero-img">
         <div class="hero-text-overlay">
           <h1 class="text-6xl font-bold mb-4">Kamronbek & Nafisabonu</h1>
           <div class="divider"></div>
@@ -327,9 +478,13 @@
   </section>
 
   <!-- Details Section -->
-  <section id="details" class="section-bg floral-overlay flex flex-col items-center justify-center text-center p-8">
+  <section id="details" class="section-bg floral-overlay">
     <div class="content fade-in">
       <div class="details-card">
+        <span class="corner-floral top-left">❁</span>
+        <span class="corner-floral top-right">❁</span>
+        <span class="corner-floral bottom-left">❁</span>
+        <span class="corner-floral bottom-right">❁</span>
         <h2 class="text-4xl font-bold mb-6">Детали мероприятия</h2>
         <div class="divider"></div>
         <div class="countdown" id="countdown">
@@ -339,10 +494,8 @@
         </div>
         <p class="details-text">Дата: 19 июля 2025 года</p>
         <p class="details-text">Время: 19:00</p>
-        <p class="details-text">Адресс: Ресторан "Diyora", Самаркандская область, Самаркандская кольцевая дорога, 27</p>
-        <a href="" target="_blank" class="btn px-6 py-3 font-semibold mt-4">
-          Подтвердить участие
-        </a>
+        <p class="details-text">Место: Ресторан "Diyora", Самаркандская область, Самаркандская кольцевая дорога, 27</p>
+      
       </div>
     </div>
   </section>
