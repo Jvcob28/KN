@@ -29,6 +29,7 @@
       width: 100%;
       max-width: 800px;
       height: auto;
+      animation: photoFadeIn 1.5s ease-in;
     }
     .hero-img {
       width: 100%;
@@ -51,10 +52,9 @@
       justify-content: center;
     }
     .section-bg {
-      background-image: url('https://images.unsplash.com/photo-1515934751447-291f7507c9b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
-      background-size: cover;
-      background-position: center;
+      background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
       position: relative;
+      overflow: hidden;
     }
     .floral-overlay::before {
       content: '';
@@ -64,7 +64,7 @@
       right: 0;
       bottom: 0;
       background: url('https://www.transparenttextures.com/patterns/gold-flower.png');
-      opacity: 0.15;
+      opacity: 0.2;
       z-index: 0;
     }
     .content {
@@ -81,6 +81,7 @@
       padding: 0.75rem 1.5rem;
       font-size: 1rem;
       cursor: pointer;
+      font-family: 'Playfair Display', serif;
     }
     .btn:hover {
       transform: scale(1.05);
@@ -90,12 +91,12 @@
     section {
       min-height: 100vh;
       scroll-snap-align: start;
-      border-bottom: 1px solid #b8860b;
+      border-bottom: 2px solid #b8860b;
       padding: 1rem;
     }
     h1, h2 {
       font-family: 'Playfair Display', serif;
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+      text-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
     }
     .fade-in {
       animation: fadeIn 1.2s ease-in;
@@ -104,13 +105,97 @@
       0% { opacity: 0; transform: translateY(30px); }
       100% { opacity: 1; transform: translateY(0); }
     }
-    .divider {
-      width: 80px;
-      height: 2px;
-      background: #b8860b;
-      margin: 1rem auto;
+    @keyframes photoFadeIn {
+      0% { opacity: 0; transform: scale(0.95); }
+      100% { opacity: 1; transform: scale(1); }
     }
-    /* Адаптивность для разных устройств */
+    .countdown {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-bottom: 1rem;
+      font-family: 'Playfair Display', serif;
+    }
+    .countdown div {
+      background: #2c2c2c;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      border: 1px solid #b8860b;
+      text-align: center;
+      min-width: 60px;
+      box-shadow: 0 4px 10px rgba(184, 134, 11, 0.3);
+    }
+    .countdown span {
+      display: block;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .countdown label {
+      font-size: 0.875rem;
+      text-transform: uppercase;
+    }
+    .divider {
+      width: 100px;
+      height: 3px;
+      background: linear-gradient(to right, transparent, #b8860b, transparent);
+      margin: 1.5rem auto;
+      position: relative;
+    }
+    .divider::before, .divider::after {
+      content: '';
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: #b8860b;
+      border-radius: 50%;
+      top: -4.5px;
+    }
+    .divider::before {
+      left: -6px;
+    }
+    .divider::after {
+      right: -6px;
+    }
+    .details-card {
+      background: #2c2c2c;
+      border: 3px solid #b8860b;
+      border-radius: 15px;
+      padding: 2rem;
+      max-width: 600px;
+      box-shadow: 0 10px 30px rgba(184, 134, 11, 0.4);
+      animation: cardFadeIn 1.5s ease-in;
+      position: relative;
+      overflow: hidden;
+    }
+    .details-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(184, 134, 11, 0.1) 0%, transparent 70%);
+      animation: glowPulse 6s ease-in-out infinite;
+    }
+    @keyframes cardFadeIn {
+      0% { opacity: 0; transform: translateY(50px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes glowPulse {
+      0% { opacity: 0.3; }
+      50% { opacity: 0.6; }
+      100% { opacity: 0.3; }
+    }
+    .details-text {
+      position: relative;
+      z-index: 1;
+      font-family: 'Playfair Display', serif;
+      text-align: center;
+      font-size: 1.25rem;
+      line-height: 1.75;
+      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+    }
     @media (max-width: 1280px) {
       .hero-img-container {
         max-width: 90%;
@@ -124,6 +209,13 @@
       .btn {
         padding: 0.5rem 1.25rem;
         font-size: 0.9rem;
+      }
+      .countdown span {
+        font-size: 1.25rem;
+      }
+      .details-card {
+        max-width: 500px;
+        padding: 1.5rem;
       }
     }
     @media (max-width: 768px) {
@@ -149,11 +241,25 @@
         padding: 0.5rem 1rem;
         font-size: 0.875rem;
       }
-      .divider {
-        width: 60px;
+      .countdown div {
+        min-width: 50px;
+        padding: 0.5rem;
       }
-      section {
-        padding: 0.75rem;
+      .countdown span {
+        font-size: 1rem;
+      }
+      .countdown label {
+        font-size: 0.75rem;
+      }
+      .divider {
+        width: 80px;
+      }
+      .details-card {
+        max-width: 90%;
+        padding: 1rem;
+      }
+      .details-text {
+        font-size: 1rem;
       }
     }
     @media (max-width: 480px) {
@@ -179,11 +285,25 @@
         padding: 0.5rem 0.75rem;
         font-size: 0.75rem;
       }
-      .divider {
-        width: 50px;
+      .countdown div {
+        min-width: 40px;
+        padding: 0.4rem;
       }
-      section {
-        padding: 0.5rem;
+      .countdown span {
+        font-size: 0.875rem;
+      }
+      .countdown label {
+        font-size: 0.625rem;
+      }
+      .divider {
+        width: 60px;
+      }
+      .details-card {
+        padding: 0.75rem;
+      }
+      .details-text {
+        font-size: 0.875rem;
+        line-height: 1.5;
       }
     }
   </style>
@@ -198,7 +318,9 @@
           <h1 class="text-6xl font-bold mb-4">Kamronbek & Nafisabonu</h1>
           <div class="divider"></div>
           <p class="text-2xl mb-8">Приглашаем вас на нашу свадьбу!</p>
-        
+          <a href="" target="_blank" class="btn px-6 py-3 font-semibold">
+            Подтвердить участие
+          </a>
         </div>
       </div>
     </div>
@@ -207,14 +329,21 @@
   <!-- Details Section -->
   <section id="details" class="section-bg floral-overlay flex flex-col items-center justify-center text-center p-8">
     <div class="content fade-in">
-      <h2 class="text-4xl font-bold mb-6">Детали мероприятия</h2>
-      <div class="divider"></div>
-      <p class="text-xl max-w-2xl mb-4">Дата: 19 июля 2025 года</p>
-      <p class="text-xl max-w-2xl mb-4">Время: 19:00</p>
-      <p class="text-xl max-w-2xl mb-8">Место: Ресторан "Diyora", ул. Солнечная, 12, Москва</p>
-      <a href="" target="_blank" class="btn px-6 py-3 font-semibold">
-        Подтвердить участие
-      </a>
+      <div class="details-card">
+        <h2 class="text-4xl font-bold mb-6">Детали мероприятия</h2>
+        <div class="divider"></div>
+        <div class="countdown" id="countdown">
+          <div><span id="days">0</span><label>Дней</label></div>
+          <div><span id="hours">0</span><label>Часов</label></div>
+          <div><span id="minutes">0</span><label>Минут</label></div>
+        </div>
+        <p class="details-text">Дата: 19 июля 2025 года</p>
+        <p class="details-text">Время: 19:00</p>
+        <p class="details-text">Адресс: Ресторан "Diyora", Самаркандская область, Самаркандская кольцевая дорога, 27</p>
+        <a href="" target="_blank" class="btn px-6 py-3 font-semibold mt-4">
+          Подтвердить участие
+        </a>
+      </div>
     </div>
   </section>
 
@@ -222,6 +351,29 @@
     function scrollToSection(sectionId) {
       document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
     }
+
+    // Таймер обратного отсчёта
+    function updateCountdown() {
+      const weddingDate = new Date('2025-07-19T19:00:00').getTime();
+      const now = new Date().getTime();
+      const distance = weddingDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+      document.getElementById('days').textContent = days;
+      document.getElementById('hours').textContent = hours;
+      document.getElementById('minutes').textContent = minutes;
+
+      if (distance < 0) {
+        document.getElementById('countdown').innerHTML = '<p class="details-text">Свадьба началась!</p>';
+      }
+    }
+
+    // Обновлять таймер каждую минуту
+    setInterval(updateCountdown, 60000);
+    updateCountdown(); // Запуск сразу
   </script>
 </body>
 </html>
